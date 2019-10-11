@@ -1,1 +1,5 @@
 builddir/
+minted-report/
+/_minted-report/
+/report.aux
+/report.log
