@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{multicol,multirow}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{minted}
+
+\usepackage{color} %% это для отображения цвета в коде
+\usepackage{listings} %% собственно, это и есть пакет listings
+
+\lstset{ %
+language=C,                 % выбор языка для подсветки (здесь это С)
+basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
+numbers=left,               % где поставить нумерацию строк (слева\справа)
+%numberstyle=\tiny,           % размер шрифта для номеров строк
+stepnumber=1,                   % размер шага между двумя номерами строк
+numbersep=5pt,                % как далеко отстоят номера строк от подсвечиваемого кода
+backgroundcolor=\color{white}, % цвет фона подсветки - используем \usepackage{color}
+showspaces=false,            % показывать или нет пробелы специальными отступами
+showstringspaces=false,      % показывать или нет пробелы в строках
+showtabs=false,             % показывать или нет табуляцию в строках
+frame=single,              % рисовать рамку вокруг кода
+tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+breaklines=true,           % автоматически переносить строки (да\нет)
+breakatwhitespace=false, % переносить строки только если есть пробел
+escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+}
+
+% Оригиналный шаблон: http://k806.ru/dalabs/da-report-template-2012.tex
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСОЙ ФЕДЕРАЦИИ
+\medskip
+МОСКОВСКИЙ АВЦИАЦИОННЫЙ ИНСТИТУТ
+(НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЬЕЛЬСКИЙ УНИВЕРСТИТЕТ)
+\vfill\vfill
+{\Huge ЛАБОРАТОРНАЯ РАБОТА №2} 
+по курсу объектно-ориентированное программирование
+I семестр, 2019/20 уч. год}
+\end{center}
+\vfill
+
+Студент \uline{\it {Артемьев Дмитрий Иванович, группа М8О-206Б-18}\hfill}
+
+Преподаватель \uline{\it {Журавлёв Андрей Андреевич}\hfill}
+
+\vfill
+\end{titlepage}
+
+\subsection*{Условие}
+
+Задание №1: написать класс, который реализует комплексные числа в алгебраической форме с операциями: 
+\begin{enumerate}
+\item сложения add, (a, b) + (c, d) = (a + c, b + d);
+\item вычитания sub, (a, b) – (c, d) = (a – c, b – d);
+\item умножения mul, (a, b) * (c, d) = (ac – bd, ad + bc);
+\item деления div, (a, b) / (c, d) = (ac + bd, bc – ad) / (c2 + d2);
+\item сравнение equ, (a, b) = (c, d), если (a = c) и (b = d);
+\item сопряженное число conj, conj(a, b) = (a, –b);
+\item сравнения модулей.
+\end{enumerate}
+
+\subsection*{Описание программы}
+
+Исходный код лежит в 3 файлах:
+\begin{enumerate}
+\item src/main.cpp: основная программа, которая считывает 2 комплексных числа и обрабатывает их 
+\item include/Complex.hpp: описание класса, объявление методов операций
+\item src/Complex.cpp: реализация объявленных функций
+\end{enumerate}
+
+\subsection*{Дневник отладки}
+
+Сравнении типа double нужно проводить с определённой точностью
+
+\subsection*{Недочёты}
+
+Не идеально прописаны файлы meson.build.
+
+\subsection*{Выводы}
+
+Я изучил перегрузку операторов в языке C++, систему сборки проектов meson, библиотеку для модульного тестирования Google C++ Testing Framework.
+
+\vfill
+
+\subsection*{Исходный код}
+
+{\Huge Complex.hpp}
+\inputminted
+    {C++}{include/Complex.hpp}
+    \pagebreak
+
+{\Huge Complex.cpp}
+\inputminted
+    {C++}{src/Complex.cpp}
+    \pagebreak
+    
+{\Huge main.cpp}
+\inputminted
+    {C++}{src/main.cpp}
+    \pagebreak    
+\end{document}
