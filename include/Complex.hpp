@@ -33,14 +33,12 @@ public:
     friend std::ostream& operator<< (std::ostream& out, Complex const& other);
     friend std::istream& operator>> (std::istream& in, Complex& other);
 
-    Complex& operator- () {
-        (*this) = Complex(-re, -im);
-        return *this;
+    Complex operator- () {
+        return Complex(-re, -im);
     }
 
-    Complex& operator+ () {
-        (*this) = Complex(re, im);
-        return *this;
+    Complex operator+ () {
+        return Complex(re, im);
     }
 private:
     double re;
